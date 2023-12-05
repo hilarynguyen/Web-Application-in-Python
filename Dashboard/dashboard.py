@@ -1,8 +1,9 @@
 import streamlit as st
 import plotly.express as px
 import pandas as pd
-import os
+# import os
 import warnings
+# import requests
 warnings.filterwarnings('ignore')
 
 st.set_page_config(page_title="Superstore!", page_icon= ":bar_chart:", layout="wide")
@@ -16,8 +17,9 @@ if fl is not None:
     df = pd.read_csv(filename)
 
 else:
-    os.chdir(r"D:\Self-learn\Web app\Web-Application-in-Python\Dashboard")
-    df = pd.read_csv('Superstore.csv', encoding='ISO-8859-1')
+    # os.chdir(r"D:\Self-learn\Web app\Web-Application-in-Python\Dashboard")
+    url = 'https://raw.githubusercontent.com/hilarynguyen/Web-Application-in-Python/main/Dashboard/Superstore.csv'
+    df = pd.read_csv(url,index_col=0, encoding='ISO-8859-1')
 
 col1, col2 = st.columns((2))
 df['Order Date'] = pd.to_datetime(df['Order Date'])
